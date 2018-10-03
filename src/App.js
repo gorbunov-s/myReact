@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import H1 from './H1.js';
+import H1 from './components/H1';
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +61,6 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
-		  
         </header>
         
         <H1 className='App-title' text={inputValue} color={color} />
