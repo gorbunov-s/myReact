@@ -1,5 +1,5 @@
 import React from 'react';
-import inputColor from './App';
+
 
 class H1 extends React.Component {
 	
