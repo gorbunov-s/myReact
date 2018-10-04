@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import H1 from './components/H1';
@@ -11,6 +11,9 @@ class App extends Component {
       inputValue: '',
       color: 'black',
       customClass : [],
+      colorList : ['red', 'green', 'blue', 'black', 'yellow'],
+      defaultCard : 'black',
+      value : '',
     };
   }
   
@@ -21,20 +24,8 @@ class App extends Component {
   };
 
   inputColor = (e) => {
-    const value = e.target.value;
-    let color1;
-
-    if (value === '1') {
-      color1 = 'red'
-    } else if (value === '2') {
-      color1 = 'green'
-    } else if (value === '3') {
-      color1 = 'blue'
-    } else {
-      color1 = 'black'
-    }
-
-    this.setState({color: color1});
+    const color = e.target.value;
+    this.setState({color});
   };
 
   inputFont = (e) => {
@@ -52,9 +43,13 @@ class App extends Component {
       customClass : customClass, // might be { customClass }
     })
   };
+  handleSubmit(event) {
+    alert('A password was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
 
   render() {
-    const { inputValue, color, customClass } = this.state;
+    const { inputValue, color, customClass, colorList, defaultCard } = this.state;
 
     return (
       <div className={"App " + customClass.join(' ')}>
@@ -69,25 +64,24 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         
-        <form>
-          <input type='password' value={inputValue} onChange={this.inputHandler} /><br/><br/>
-          
+        <form onSubmit={this.handleSubmit}>
           <label>
-            red: <input type='radio' name='group' value='1' onChange={this.inputColor} />
+            Password:
+            <input type='password' value={inputValue} onChange={this.inputHandler} /><br/><br/>
           </label>
+          <input type="submit" value="Submit" />
+        </form>
+          { colorList.map((item) => {
+            return (
+  
+              <label key={item.toString()}>
+                {item}: <input defaultChecked={item.toString() === defaultCard} type='radio' name='group' value={item} onChange={this.inputColor} />
+              </label>
+ 
+            )
+          }) }
           
-          <label>
-            green: <input  type='radio' name='group' value='2' onChange={this.inputColor} />
-          </label>
-          
-          <label>
-            blue: <input  type='radio' name='group' value='3' onChange={this.inputColor} />
-          </label>
-          
-          <label>
-            reset: <input  defaultChecked type='radio' name='group' value='4' onChange={this.inputColor} />
-          </label>
-          
+         
           <br/>
 
           <label>
@@ -101,7 +95,7 @@ class App extends Component {
             <input  type='checkbox' value='decorate' onChange={this.inputFont} />
             decorate
           </label>
-        </form>
+
       </div>
     );
   }

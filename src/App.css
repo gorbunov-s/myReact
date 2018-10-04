@@ -3,6 +3,9 @@
   transition: all 0.5s ease-out;
 }
 
+.App li {
+  list-style-type: none;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -28,12 +31,16 @@
 } 
 .red {
 	color:red;
+
 }
 .green {
 	color:green;
 }
 .black {
 	color: black;
+}
+.yellow {
+	color: yellow;
 }
 
 .capitalize {
