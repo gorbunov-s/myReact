@@ -15,6 +15,7 @@ class App extends Component {
       defaultCard : 'black',
       value : '',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   inputHandler = (e) => {
