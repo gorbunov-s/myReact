@@ -7,11 +7,13 @@ import { findPokemonByName, findAllPokemons } from './services/pokeServices';
 import Select from './components/Select';
 import Pokemon from './components/Pokemon';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+
       currentPokemon: {},
       pokemonList: [],
       loading: false
@@ -48,10 +50,12 @@ class App extends Component {
     });
   };
 
+
   render() {
-    const { inputValue, color, customClass, colorList, defaultCard } = this.state;
+    const {currentColor, customColorList, isOpen, filter } = this.state;
 
     return (
+
       <div>
         <p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
 
@@ -63,6 +67,8 @@ class App extends Component {
         />
 
         <Pokemon pokemon={ this.state.currentPokemon }/>
+
+      
       </div>
     );
   }

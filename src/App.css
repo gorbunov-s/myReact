@@ -28,21 +28,39 @@
  
 .blue {
 	color:blue;
+	cursor: pointer;
 } 
 .red {
 	color:red;
-
+	cursor: pointer;
 }
 .green {
 	color:green;
+	cursor: pointer;
 }
 .black {
-	color: black;
+	color: #444;
+	cursor: pointer;
 }
 .yellow {
 	color: yellow;
+	cursor: pointer;
 }
-
+.pink {
+  background: pink;
+}
+.lime {
+  background: lime;
+}
+.maroon {
+  background: maroon;
+}
+.purple {
+  background: purple;
+}
+.itemList {
+	cursor: pointer;
+}
 .capitalize {
   text-transform: capitalize;
   transform: rotate(90deg);
