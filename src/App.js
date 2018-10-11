@@ -1,102 +1,68 @@
- import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import H1 from './components/H1';
+
+import { findPokemonByName, findAllPokemons } from './services/pokeServices';
+
+// Components
+import Select from './components/Select';
+import Pokemon from './components/Pokemon';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      inputValue: '',
-      color: 'black',
-      customClass : [],
-      colorList : ['red', 'green', 'blue', 'black', 'yellow'],
-      defaultCard : 'black',
-      value : '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
-  inputHandler = (e) => {
-    this.setState({
-      inputValue: e.target.value,
-    })
-  };
-
-  inputColor = (e) => {
-    const color = e.target.value;
-    this.setState({color});
-  };
-
-  inputFont = (e) => {
-    let customClass = this.state.customClass.slice();
-    const value = e.target.value;
-    const idx = customClass.indexOf(value);
-
-    if (idx === -1) {
-      customClass.push(value)
-    } else {
-      customClass.splice(idx, 1);
+      currentPokemon: {},
+      pokemonList: [],
+      loading: false
     }
+  }
+
+  componentDidMount() {
+    this.pokemonFinder();
+  }
+
+  pokemonFinder = () => {
+    findAllPokemons().then(pokemonList => {
+      this.setState({
+        pokemonList,
+      })
+    });
+  };
+
+  pokemonDataFinder = (name) => {
+    const DEFAULT_AVATAR = 'https://i.mycdn.me/image?id=812378169248&plc=WEB&tkn=*B46OADZOK_YqBGxieVHpUuhHKzM&fn=sqr_288';
 
     this.setState({
-      customClass : customClass, // might be { customClass }
-    })
+      currentPokemon: {},
+      loading: true,
+    });
+
+    findPokemonByName(name).then(currentPokemon => {
+      currentPokemon.avatar = currentPokemon.sprites['front_default'] || DEFAULT_AVATAR;
+
+      this.setState({
+        currentPokemon,
+        loading: false,
+      });
+    });
   };
-  handleSubmit(event) {
-    alert('A password was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
 
   render() {
     const { inputValue, color, customClass, colorList, defaultCard } = this.state;
 
     return (
-      <div className={"App " + customClass.join(' ')}>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        
-        <H1 className='App-title' text={inputValue} color={color} />
-        
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Password:
-            <input type='password' value={inputValue} onChange={this.inputHandler} /><br/><br/>
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-          { colorList.map((item) => {
-            return (
-  
-              <label key={item.toString()}>
-                {item}: <input defaultChecked={item.toString() === defaultCard} type='radio' name='group' value={item} onChange={this.inputColor} />
-              </label>
- 
-            )
-          }) }
-          
-         
-          <br/>
+      <div>
+        <p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
 
-          <label>
-            <input  type='checkbox' value='capitalize' onChange={this.inputFont} />
-            capitalize
-          </label>
+        <Select className={ 'red' }
+                name={ this.state.currentPokemon.name }
+                pokemonList={ this.state.pokemonList }
+                limit={ 10 }
+                onChange={ this.pokemonDataFinder }
+        />
 
-          <br/>
-
-          <label>
-            <input  type='checkbox' value='decorate' onChange={this.inputFont} />
-            decorate
-          </label>
-
+        <Pokemon pokemon={ this.state.currentPokemon }/>
       </div>
     );
   }
