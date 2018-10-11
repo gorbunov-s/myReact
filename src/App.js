@@ -49,6 +49,8 @@ class App extends Component {
   };
 
   render() {
+    const { inputValue, color, customClass, colorList, defaultCard } = this.state;
+
     return (
       <div>
         <p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
