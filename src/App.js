@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-
+//services
 import { findPokemonByName, findAllPokemons } from './services/pokeServices';
-
 // Components
 import Select from './components/Select';
 import Pokemon from './components/Pokemon';
+
 
 
 class App extends Component {
@@ -56,9 +56,9 @@ class App extends Component {
 
     return (
 
-      <div>
+      <div className={'page'}>
         <p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
-
+		<Pokemon pokemon={ this.state.currentPokemon } loading={ this.state.loading}/>
         <Select className={ 'red' }
                 name={ this.state.currentPokemon.name }
                 pokemonList={ this.state.pokemonList }
@@ -66,7 +66,7 @@ class App extends Component {
                 onChange={ this.pokemonDataFinder }
         />
 
-        <Pokemon pokemon={ this.state.currentPokemon }/>
+        
 
       
       </div>

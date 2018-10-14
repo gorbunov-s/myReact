@@ -7,7 +7,7 @@
   list-style-type: none;
 }
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 0.7s linear;
   height: 80px;
 }
 
@@ -25,7 +25,12 @@
 .App-intro {
   font-size: large;
 }
- 
+.avatar {
+	 background: #ddd;
+	 border: thin solid maroon;
+	 border-radius: 50%;
+	 padding: 15px;
+ } 
 .blue {
 	color:blue;
 	cursor: pointer;
@@ -65,7 +70,19 @@
   text-transform: capitalize;
   transform: rotate(90deg);
 }
+.page {
+	width: 400px;
+	margin: 40px auto;
+	background: #eee;
+	padding: 10px 20px;
+	text-align: center;
+}
 
+.poke-header {
+	font-size: 25px;
+	color: green;
+	font-weight: bold;
+}
 .decorate {
   text-decoration: underline;
   background: red;

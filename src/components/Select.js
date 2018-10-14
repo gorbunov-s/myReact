@@ -40,8 +40,7 @@ class Select extends Component {
     const { filter } = this.state;
 
     let customPokemonList = pokemonList.filter(function (pokemon) {
-
-      return pokemon.name.indexOf(filter) !== -1
+      return pokemon.name.indexOf(filter.toLowerCase()) !== -1
     });
 
     this.setState({
@@ -63,7 +62,7 @@ class Select extends Component {
         <div className={ `selectHeader ${this.props.className} ${this.state.isOpen && 'selectOpen'}` }
              onClick={ this.toggleList }
         >
-          { this.props.name || 'Покемон не выбран' }
+          { this.props.name && 'Это твой ПОКЕМОН' || 'Кто это???' }
         </div>
 
         {

@@ -33,7 +33,6 @@ class PokemonFinder extends Component {
           urlPath: currentPokemon.sprites[sprite]
         })
       }
-
       this.setState({
         currentPokemon,
       })
@@ -48,10 +47,6 @@ class PokemonFinder extends Component {
         <input value={name} type='text' onChange={this.nameHandler}/>
 
         <button onClick={this.pokemonFinder}>Find data!</button>
-
-        {/*<pre>
-          {JSON.stringify(currentPokemon, true,' ')}
-        </pre>*/}
 
         {currentPokemon && currentPokemon.customSprites && currentPokemon.customSprites.map(({name, urlPath}) => {
             if(urlPath) {
