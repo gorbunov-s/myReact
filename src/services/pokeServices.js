@@ -25,7 +25,7 @@ async function findAllPokemons() {
 
   if (response.ok) {
     const body = await response.json();
-	console.log(body);
+	//console.log(body);
     return body.results;
 
   } else {

@@ -52,7 +52,7 @@ class App extends Component {
 
 
   render() {
-    const {currentColor, customColorList, isOpen, filter } = this.state;
+   // const {currentColor, customColorList, isOpen, filter } = this.state;
 
     return (
 

@@ -5,7 +5,7 @@ class Preloader extends Component {
 	
 	render() {
 		return (
-			<img className='App-logo' src={ imgPreloader } />
+			<img className='App-logo' src={ imgPreloader } alt='pokimage' />
 		)
 	}
 }
