@@ -14,7 +14,7 @@ class Pokemon extends PureComponent {
 	  : this.props.pokemon.name  && <img className='avatar'src={ this.props.pokemon.avatar } alt={ this.props.pokemon.name  }/>	
 	    	
 	  }
-        <h1 className='blue'>{ this.props.pokemon.name }</h1>
+        <h1 className='blue'>{ this.props.pokemon.name && 'I am '+ this.props.pokemon.name + '!!!!'}</h1>
       </div>
     )
   }

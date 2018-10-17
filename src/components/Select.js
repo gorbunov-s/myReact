@@ -62,7 +62,7 @@ class Select extends Component {
         <div className={ `selectHeader ${this.props.className} ${this.state.isOpen && 'selectOpen'}` }
              onClick={ this.toggleList }
         >
-          { this.props.name ? 'Это твой ПОКЕМОН' : 'Кто это???' }
+          { this.props.name ? 'Я твой ПОКЕМОН' : 'Кто это???' }
         </div>
 
         {

@@ -8,8 +8,9 @@ async function findPokemonByName(name) {
 
   if (response.ok) {
     const body = await response.json();
+    //console.log(body);
     return body;
-
+	
   } else {
     throw new Error(response);
   }
