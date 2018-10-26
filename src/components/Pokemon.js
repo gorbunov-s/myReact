@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-
 import  Preloader from './preLoader';
 
 class Pokemon extends PureComponent {

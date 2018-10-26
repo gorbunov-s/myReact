@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 //services
-import { findPokemonByName, findAllPokemons } from './services/pokeServices';
+import { findPokemonByName, findAllPokemons, Error } from './services/pokeServices';
 // Components
 import Select from './components/Select';
 import Pokemon from './components/Pokemon';
+//import H1 from './components/H1'
 
-
+//console.log(Error);
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+	  Error : {},
       currentPokemon: {},
       pokemonList: [],
       loading: false
@@ -50,26 +51,23 @@ class App extends Component {
     });
   };
 
-
   render() {
-   // const {currentColor, customColorList, isOpen, filter } = this.state;
-
+    const { currentPokemon, pokemonList } = this.state;
     return (
-
-      <div className={'page'}>
-        <p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
-		<Pokemon pokemon={ this.state.currentPokemon } loading={ this.state.loading}/>
-        <Select className={ 'red' }
-                name={ this.state.currentPokemon.name }
-                pokemonList={ this.state.pokemonList }
-                limit={ 10 }
-                onChange={ this.pokemonDataFinder }
-        />
-
-        
-
       
-      </div>
+		<div className={'page'}>
+			<p className={ 'poke-header' }>Найди своего ПОКЕМОНА</p>
+			<Pokemon pokemon={ currentPokemon } loading={ this.state.loading}/>
+			<Select className={ 'red' }
+					name={ currentPokemon.name }
+					pokemonList={ pokemonList }
+					limit={ 10 }
+					onChange={ this.pokemonDataFinder }
+			/>
+
+		</div>
+        
+      
     );
   }
 }

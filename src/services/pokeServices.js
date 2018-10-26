@@ -8,11 +8,13 @@ async function findPokemonByName(name) {
 
   if (response.ok) {
     const body = await response.json();
-    //console.log(body);
+    console.log(body);
     return body;
 	
   } else {
-    throw new Error(response);
+	//console.log('error response');  
+    throw new Error(500);
+	
   }
 }
 
@@ -30,8 +32,12 @@ async function findAllPokemons() {
     return body.results;
 
   } else {
-    throw new Error(response);
+    throw new Error("Ошибка сервера 400");
   }
 }
-export { findPokemonByName, findAllPokemons };
-export default { findPokemonByName, findAllPokemons };
+function Error(message) {
+	console.log(message);
+	return message;
+  }
+export { findPokemonByName, findAllPokemons, Error };
+export default { findPokemonByName, findAllPokemons, Error };
